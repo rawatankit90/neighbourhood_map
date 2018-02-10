@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Neighbourhood Map</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+       #map {
+        height: 700px;
+        width: 700px;
+       }
+    </style>
+</head>
+<script src="js/map.js"></script>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4">
+          <p>Filter: <input data-bind="value: filter, valueUpdate: 'afterkeydown'" /></p>
+          <table id="mytable">
+            <thead>
+              <tr>
+                <th>Location Name</th>
+                <th> latitude </th>
+                <th> longitude </th>
+              </tr>
+            </thead>
+            <tbody data-bind="template: { name: 'placesTmpl', foreach: filteredItems }"></tbody>
+              <script id="placesTmpl" type="text/html">
+                <tr>
+                  <td>
+                    <input data-bind="value: name" />
+                  </td>
+                  <td>
+                    <input data-bind="value: latitude"></input>
+                  </td>
+                  <td>
+                    <input data-bind="value: longitude" />
+                  </td>
+                </tr>
+              </script>
+          </table>
+      </div>
+      <div class="col-xs-8">
+        <div id="map"></div>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArYCyWp6A4195BKhwPGJWLuKL9_gIOyLw&callback=initMap">
+        </script>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="js/knockout.js"></script>
+<script src="js/main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</html>
